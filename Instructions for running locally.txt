@@ -1,0 +1,30 @@
+Instructions for running locally:
+
+- ensure you have java installed on your machine
+- extract the schoolapplication zip file
+- install PostgreSQL for your machine:- https://www.enterprisedb.com/downloads/postgres-postgresql-downloads?gad_source=1&gclid=CjwKCAjwoa2xBhACEiwA1sb1BA8KHiT3cyU3YVXSWHnTx1aEiw7HM5VjFar73JXDFW_sueG9bdgcIxoCeF8QAvD_BwE
+
+- during installation, note the password you provide
+- after installation, open psql(shell) and login with your password
+- create the database school by running: CREATE DATABASE school;
+- grant permission to the user postgres by running the command: GRANT ALL PRIVILEGES ON DATABASE "school" to postgres;
+- run the command to check if your database is saved: \l
+- run the command to connect to school database: \c school
+- assuming the schoolapplication is open on your ide(preferably intellij),
+navigate to schoolapplication -> src -> main -> resources -> application.properties
+-replace spring.datasource.password=Sonal1234 with the password you saved in PostgreSQL.
+-now, navigate to schoolapplication -> src -> main -> java -> com.example.schoolapp -> SchoolApplication
+- run that current file to finally start the application
+
+
+format for sending api requests(student api): http://localhost:8081/api/v1/student/1/1 (here, after student, /1/1 signifies the parentId and teacherId).
+the commandlinerunner has intialized two parents and teachers with ids 1 and 2 for use.
+								     
+format for sending api requests(parent api): http://localhost:8081/api/v1/parent
+
+format for sending api requests(teacher api): http://localhost:8081/api/v1/teacher
+
+you may run sql commands such as (select * from student) in psql to view table data.
+
+
+the testing section can be found in: schoolapplication -> src -> test -> java -> com.example.schoolapp
